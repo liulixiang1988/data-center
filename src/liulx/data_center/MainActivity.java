@@ -1,6 +1,16 @@
 package liulx.data_center;
 
 
+import java.io.UnsupportedEncodingException;
+
+import org.apache.http.Header;
+import org.apache.http.entity.StringEntity;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 
@@ -11,6 +21,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity implements OnClickListener {
 	private final static int SCANNIN_ITEM_CODE = 1;
@@ -18,6 +29,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 
 	private Button btnScanItem, btnScanInv, btnSend;
 	private EditText edtItemCode, edtInvCode;
+	private TextView tvResult;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,6 +40,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		
 		edtItemCode = (EditText) findViewById(R.id.edtItemCode);
 		edtInvCode = (EditText) findViewById(R.id.edtInvCode);
+		
+		tvResult = (TextView) findViewById(R.id.tvResult);
 		
 		btnScanItem.setOnClickListener(this);
 		btnScanInv.setOnClickListener(this);
@@ -88,7 +102,76 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	
 	//发送数据
 	private void btnSend_onClick(){
-		
+		System.out.println("发送按钮点击");
+		JSONObject jsonParams = new JSONObject();
+		try {
+
+//			DataCenterRestClient.get("inventories/test", null, new JsonHttpResponseHandler() {
+//	            @Override
+//	            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//	            	try {
+//						String msg = response.getString("inventory_name");
+//						tvResult.setText(msg);
+//					} catch (JSONException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//						tvResult.setText(e.toString());
+//					}
+//	            }
+//	            
+//	            @Override
+//	            public void onFailure(int statusCode, Header[] headers,
+//	            		String responseString, Throwable throwable) {
+//	            	// TODO Auto-generated method stub
+//	            	try {
+//						String msg = responseString;
+//						tvResult.setText(msg);
+//					} catch (Exception e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//						tvResult.setText(e.toString());
+//					}
+//	            }
+//	       
+//	        });
+			jsonParams.put("item_code", edtItemCode.getText().toString());
+			jsonParams.put("inventory_code", edtInvCode.getText().toString());
+			System.out.println(jsonParams.toString());
+			StringEntity entity = new StringEntity(jsonParams.toString());
+			DataCenterRestClient.postJson(this, "material_inv", entity, new JsonHttpResponseHandler(){
+				@Override
+				public void onSuccess(int statusCode, Header[] headers,
+						JSONObject response) {
+					try {
+						String msg = response.getString("message");
+						System.out.println("返回的消息："+msg);
+						tvResult.setText(msg);
+					} catch (JSONException e) {
+						System.out.println("A发生错误："+e.toString());
+						tvResult.setText(e.toString());
+					}
+				}
+				
+				@Override
+				public void onFailure(int statusCode, Header[] headers,
+						String responseString, Throwable throwable) {
+					System.out.println("发生错误"+statusCode);
+					tvResult.setText("发生错误"+statusCode);
+				}
+			});
+		} 
+		catch (JSONException e) {
+			System.out.println("B发生错误："+e.toString());
+			tvResult.setText(e.toString());
+		} 
+		catch (UnsupportedEncodingException e) {
+			System.out.println("C发生错误："+e.toString());
+			tvResult.setText(e.toString());
+		} 
+		catch(Exception e){
+			System.out.println("D发生错误" + e.toString());
+		}
+		System.out.println("发送结束");
 	}
 	
 	@Override
@@ -109,7 +192,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 				edtItemCode.setText(bundle.getString("result"));
 			}
 			break;
-			
 		}
 	}
 }
