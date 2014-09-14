@@ -4,52 +4,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="liulx.data_center.MainActivity" >
-	<LinearLayout 
-	    android:orientation="horizontal"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content">
-	 	<EditText
-	        android:id="@+id/edtItemCode"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_weight="3"
-	        android:inputType="text"
-	        android:hint="物料条码" />
 
-	    <Button
-	        android:id="@+id/btnScanItem"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
-	        android:text="扫描" /> 
-	</LinearLayout>
-	<LinearLayout 
-	    android:orientation="horizontal"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content">
-	    <EditText
-	        android:id="@+id/edtInvCode"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_weight="3"
-	        android:inputType="text"
-	        android:hint="货位条码" />
-	    <Button
-	        android:id="@+id/btnScanInv"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
-	        android:text="扫描" />	    
-	</LinearLayout>
     <Button
-        android:id="@+id/btnSend"
+        android:id="@+id/btnInvIn"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="保存" />
-    <TextView 
-        android:id="@+id/tvResult"
-        android:layout_width="match_parent"
+        android:text="@string/inv_in" />
+    
+    <Button
+        android:id="@+id/btnInvOut"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="结果" />
+        android:text="@string/inv_out" />
 
 </LinearLayout>

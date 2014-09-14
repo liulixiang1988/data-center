@@ -27,8 +27,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-import liulx.data_center.MipcaActivityCapture;
 import liulx.data_center.R;
+import liulx.data_center.ui.MipcaActivityCapture;
+
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 import com.mining.app.zxing.camera.CameraManager;

@@ -23,8 +23,9 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
-import liulx.data_center.MipcaActivityCapture;
 import liulx.data_center.R;
+import liulx.data_center.ui.MipcaActivityCapture;
+
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.MultiFormatReader;

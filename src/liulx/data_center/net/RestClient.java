@@ -1,34 +1,44 @@
-package liulx.data_center;
+package liulx.data_center.net;
+
+import liulx.data_center.config.Config;
 
 import org.apache.http.HttpEntity;
 
 import android.content.Context;
 
 import com.loopj.android.http.*;
-public class DataCenterRestClient {
-	private static final String BASE_URL = "http://172.16.223.183:8080/";
+public class RestClient {
+	
 
 	  private static AsyncHttpClient client = new AsyncHttpClient();
 	  
 	  static {
-		  client.setBasicAuth("liulx", "liulx");
+//		  client.setBasicAuth("liulx", "liulx");
+		  client.addHeader("Accept", "*/*");
+		  client.setUserAgent("data-center-client");
+	  }
+	  
+	  public static AsyncHttpClient getClient(){
+		  return client;
 	  }
 
 	  public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
 	      client.get(getAbsoluteUrl(url), params, responseHandler);
 	  }
-
-	  public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
+	  
+	  public static void post(String url, RequestParams params, ResponseHandlerInterface responseHandler) {
+		  System.out.println("«Î«ÛUrl:"+getAbsoluteUrl(url));
 	      client.post(getAbsoluteUrl(url), params, responseHandler);
 	  }
 	  
 	  public static void postJson(Context context, String url, HttpEntity entity,  ResponseHandlerInterface responseHandler){
+		  System.out.println("«Î«ÛUrl:"+getAbsoluteUrl(url));
 		  String contentType = "application/json";
-		  client.post(context, url, entity, contentType, responseHandler);
+		  client.post(context, getAbsoluteUrl(url), entity, contentType, responseHandler);
 	  }
 
 	  private static String getAbsoluteUrl(String relativeUrl) {
-	      return BASE_URL + relativeUrl;
+	      return Config.BASE_URL + relativeUrl;
 	  }
 	  
 }

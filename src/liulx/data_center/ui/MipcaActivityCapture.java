@@ -1,9 +1,12 @@
-package liulx.data_center;
+package liulx.data_center.ui;
 
 import java.io.IOException;
 import java.util.Vector;
 
 import liulx.data_center.R;
+import liulx.data_center.R.id;
+import liulx.data_center.R.layout;
+import liulx.data_center.R.raw;
 
 import android.app.Activity;
 import android.content.Intent;

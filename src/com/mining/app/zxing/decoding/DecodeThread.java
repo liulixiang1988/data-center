@@ -20,7 +20,7 @@ import java.util.Hashtable;
 import java.util.Vector;
 import java.util.concurrent.CountDownLatch;
 
-import liulx.data_center.MipcaActivityCapture;
+import liulx.data_center.ui.MipcaActivityCapture;
 
 import android.os.Handler;
 import android.os.Looper;

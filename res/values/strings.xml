@@ -5,5 +5,14 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">设置</string>
     <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
-
+	<string name="user_name">用户名</string>
+	<string name="password">密码</string>
+	<string name="login">登录</string>
+	<string name="inv_in">入库</string>
+	<string name="inv_out">出库</string>
+	<string name="item_code">物料条码</string>
+	<string name="scan">扫描</string>
+	<string name="inv_code">货位条码</string>
+	<string name="save">保存</string>
+	<string name="result">结果</string>
 </resources>
