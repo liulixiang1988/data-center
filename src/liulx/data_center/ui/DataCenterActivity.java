@@ -20,6 +20,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -117,6 +118,10 @@ public class DataCenterActivity extends Activity implements OnClickListener {
 	//发送数据
 	private void btnSend_onClick(){
 		System.out.println("发送按钮点击");
+		if(TextUtils.isEmpty(edtItemCode.getText()) || TextUtils.isEmpty(edtInvCode.getText())){
+			UIHelper.ToastMessage(this, "物料条码和货位条码不能为空");
+			return;
+		}
 		JSONObject jsonParams = new JSONObject();
 		try {
 			jsonParams.put("item_code", edtItemCode.getText().toString());
