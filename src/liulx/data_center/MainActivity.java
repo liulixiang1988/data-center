@@ -2,7 +2,9 @@ package liulx.data_center;
 
 
 import liulx.data_center.config.Config;
+import liulx.data_center.ui.IPConfigActivity;
 import liulx.data_center.ui.LoginActivity;
+import liulx.util.UIHelper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -19,11 +21,19 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		Config.initializeConfig(this);
+		
 		btnInvIn = (Button) findViewById(R.id.btnInvIn);
 		btnInvOut = (Button) findViewById(R.id.btnInvOut);
 		
 		btnInvIn.setOnClickListener(this);
 		btnInvOut.setOnClickListener(this);
+		
+		if(Config.getBaseURL(this).isEmpty()){
+			UIHelper.ToastMessage(this, "IPµÿ÷∑√ª”–≈‰÷√");
+			Intent i = new Intent(this, IPConfigActivity.class);
+			startActivity(i);
+		}
 	}
 
 	@Override

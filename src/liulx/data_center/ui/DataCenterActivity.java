@@ -34,7 +34,6 @@ public class DataCenterActivity extends Activity implements OnClickListener {
 
 	private Button btnScanItem, btnScanInv, btnSend;
 	private EditText edtItemCode, edtInvCode;
-	private TextView tvResult;
 	private String inv_type_url;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +56,6 @@ public class DataCenterActivity extends Activity implements OnClickListener {
 		edtItemCode = (EditText) findViewById(R.id.edtItemCode);
 		edtInvCode = (EditText) findViewById(R.id.edtInvCode);
 		
-		tvResult = (TextView) findViewById(R.id.tvResult);
 		
 		btnScanItem.setOnClickListener(this);
 		btnScanInv.setOnClickListener(this);
@@ -133,6 +131,10 @@ public class DataCenterActivity extends Activity implements OnClickListener {
 						String msg = response.getString("msg");
 						System.out.println("返回的消息："+msg);
 						UIHelper.ToastMessage(DataCenterActivity.this, msg);
+						int resultCode = response.getInt("status");
+						if(resultCode == 1){
+							clearText();
+						}
 					} catch (JSONException e) {
 						System.out.println("A发生错误："+e.toString());
 						UIHelper.ToastMessage(DataCenterActivity.this, e.toString());
@@ -142,13 +144,7 @@ public class DataCenterActivity extends Activity implements OnClickListener {
 				@Override
 				public void onFailure(int statusCode, Header[] headers,
 						Throwable throwable, JSONObject errorResponse) {
-					// TODO Auto-generated method stub
-					//super.onFailure(statusCode, headers, throwable, errorResponse);
 					System.out.println("发生错误3 Statuscode:"+statusCode+" ");
-					//System.out.println("发生错误3 "+throwable.getMessage());
-//					for(Header header : headers){
-//						System.out.println(header.getName()+":"+header.getValue());
-//					}
 					UIHelper.ToastMessage(DataCenterActivity.this, "发生错误3 状态："+statusCode);
 				}
 				
@@ -197,5 +193,11 @@ public class DataCenterActivity extends Activity implements OnClickListener {
 			}
 			break;
 		}
+	}
+	
+	private void clearText(){
+		edtItemCode.getText().clear();
+		edtInvCode.getText().clear();
+		edtItemCode.requestFocus();
 	}
 }

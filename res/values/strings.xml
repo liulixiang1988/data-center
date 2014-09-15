@@ -15,4 +15,7 @@
 	<string name="inv_code">货位条码</string>
 	<string name="save">保存</string>
 	<string name="result">结果</string>
+	<string name="btnSave">保存</string>
+	<string name="ip_address">IP地址</string>
+	<string name="company_name">铜陵有色</string>
 </resources>

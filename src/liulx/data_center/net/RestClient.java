@@ -1,5 +1,6 @@
 package liulx.data_center.net;
 
+import liulx.data_center.AppManager;
 import liulx.data_center.config.Config;
 
 import org.apache.http.HttpEntity;

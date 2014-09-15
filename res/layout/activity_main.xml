@@ -4,7 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="liulx.data_center.MainActivity" >
-
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/tnmg" 
+        android:contentDescription="@string/company_name"/>
     <Button
         android:id="@+id/btnInvIn"
         android:layout_width="fill_parent"
@@ -16,5 +21,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/inv_out" />
+
+
 
 </LinearLayout>
