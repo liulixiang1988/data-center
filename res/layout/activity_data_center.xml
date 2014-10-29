@@ -1,48 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-<LinearLayout 
-	    android:orientation="horizontal"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content">
-	 	<EditText
-	        android:id="@+id/edtItemCode"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_weight="3"
-	        android:inputType="text"
-	        android:hint="@string/item_code" />
 
-	    <Button
-	        android:id="@+id/btnScanItem"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
-	        android:text="@string/scan" /> 
-	</LinearLayout>
-	<LinearLayout 
-	    android:orientation="horizontal"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content">
-	    <EditText
-	        android:id="@+id/edtInvCode"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_weight="3"
-	        android:inputType="text"
-	        android:hint="@string/inv_code" />
-	    <Button
-	        android:id="@+id/btnScanInv"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
-	        android:text="@string/scan" />	    
-	</LinearLayout>
+ 	<EditText
+        android:id="@+id/edtItemCode"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:inputType="text"
+        android:hint="@string/item_code" />
+
+    <Button
+        android:id="@+id/btnAddItem"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="@string/add_item" /> 
+    <EditText
+       android:id="@+id/edtInvCode"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:textSize="25sp"
+       android:inputType="text"
+       android:hint="@string/inv_code" />	
     <Button
         android:id="@+id/btnSend"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
         android:text="@string/save" />
+
+    <TextView
+        android:id="@+id/txtItemCodes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/btnClear"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="@string/clear" />
+
 </LinearLayout>

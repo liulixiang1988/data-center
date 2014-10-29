@@ -3,6 +3,7 @@ package liulx.data_center;
 
 import liulx.data_center.config.Config;
 import liulx.data_center.ui.IPConfigActivity;
+import liulx.data_center.ui.InvOutActivity;
 import liulx.data_center.ui.LoginActivity;
 import liulx.util.UIHelper;
 import android.content.Intent;
@@ -58,17 +59,21 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		int inv_type = 0;
+		Intent i;
 		switch(v.getId()){
 		case R.id.btnInvIn:
 			inv_type = 0;
+			i = new Intent(this, LoginActivity.class);
+			i.putExtra(Config.INV_TYPE, inv_type);
+			startActivity(i);
+			finish();
 			break;
 		case R.id.btnInvOut:
-			inv_type=1;
+			i = new Intent(this, InvOutActivity.class);
+			startActivity(i);
+			finish();
 			break;
 		}
-		Intent i = new Intent(this, LoginActivity.class);
-		i.putExtra(Config.INV_TYPE, inv_type);
-		startActivity(i);
-		finish();
+
 	}
 }

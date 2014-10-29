@@ -1,16 +1,20 @@
 package liulx.data_center.net;
 
-import liulx.data_center.AppManager;
 import liulx.data_center.config.Config;
 
 import org.apache.http.HttpEntity;
 
 import android.content.Context;
+import android.util.Log;
 
-import com.loopj.android.http.*;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.ResponseHandlerInterface;
 public class RestClient {
 	
-
+	  public final static String TAG = RestClient.class.getSimpleName();
+	  
 	  private static AsyncHttpClient client = new AsyncHttpClient();
 	  
 	  static {
@@ -28,12 +32,12 @@ public class RestClient {
 	  }
 	  
 	  public static void post(String url, RequestParams params, ResponseHandlerInterface responseHandler) {
-		  System.out.println("请求Url:"+getAbsoluteUrl(url));
+		  Log.v(TAG, "请求Url:"+getAbsoluteUrl(url));
 	      client.post(getAbsoluteUrl(url), params, responseHandler);
 	  }
 	  
 	  public static void postJson(Context context, String url, HttpEntity entity,  ResponseHandlerInterface responseHandler){
-		  System.out.println("请求Url:"+getAbsoluteUrl(url));
+		  Log.v(TAG, "请求Url:"+getAbsoluteUrl(url));
 		  String contentType = "application/json";
 		  client.post(context, getAbsoluteUrl(url), entity, contentType, responseHandler);
 	  }
